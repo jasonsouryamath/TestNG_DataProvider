@@ -1,5 +1,6 @@
 # selenium_practicals
 selenium practicals in java using testng testing framework 
+
 ok i just made this repository
 i noticed that if i send through slack it messes up the ""
 and u have to keep going back and changing all of it
