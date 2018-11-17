@@ -1,4 +1,4 @@
-# selenium_practicals
+# TestNG_Dataprovider
 selenium practicals in java using testng testing framework 
 
 ok i just made this repository
