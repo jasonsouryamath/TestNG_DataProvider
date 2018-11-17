@@ -1,11 +1,19 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="automation_test_qa" parallel="classes" thread-count="3">
+<suite name="automation_test_qa" parallel="classes" thread-count="1">
+
+    <parameter name="name"     value="jason" />
+    <parameter name="message"  value="hello there" />
+    <parameter name="sname"    value="david" />
+    <parameter name="smessage" value="hello back" />
+    <parameter name="newname"  value="Michael" />
+    <parameter name="newname1" value="Molly" />
+    <parameter name="lastname" value="Newsome" />
+
     <test name="testngTest">
         <classes>
             <class name="AutomationTest.testrun"/>
-            <class name="AutomationTest.testrun2"/>
-            <class name="AutomationTest.testrun3"/>
+
         </classes>
     </test>
 </suite>
