@@ -6,7 +6,12 @@ package AutomationTest;
         import org.openqa.selenium.firefox.FirefoxDriver;
         import org.testng.annotations.AfterTest;
         import org.testng.annotations.BeforeTest;
+        import org.testng.annotations.Parameters;
         import org.testng.annotations.Test;
+
+        import java.awt.*;
+        import java.io.IOException;
+        import java.util.HashMap;
 
 
 public class testrun2 {
@@ -27,11 +32,13 @@ public class testrun2 {
         return driver;
     }
 
-    @Test(priority= 1, invocationCount = 1)
-    public void testcase1_firstbox() throws InterruptedException {
+    @Test  ( threadPoolSize = 0,priority= 1, invocationCount = 1)
+    @Parameters({"name","message"})
+    public void testcase1_firstbox(String name, String message) throws InterruptedException, IOException, AWTException {
         Thread.sleep(2000);
         objfillform = new fillformpage(driver);
-        objfillform.fillformo("jason","msg");
+        objfillform.fillformo(name,message);
+        objfillform.screenshot();
 
     }
     @Test (priority= 2, invocationCount = 1)
@@ -52,11 +59,11 @@ public class testrun2 {
         //go through each sprint iteration and fill forms
         objfillform.webnavigatenew();
         objevoform =  new evolvesovertime (driver);
-        objevoform.clickingstuff();
+        //objevoform.clickingstuff();
 
     }
     @AfterTest
     public void teardown() {
-        //driver.quit();
+        driver.quit();
     }
 }
