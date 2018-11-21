@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import purejavacomm.testsuite.TestBase;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -14,15 +15,11 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.regex.Pattern;
 
 
-public class fillformpage  {
-    WebDriver driver;
-    WebDriverWait wait;
-
-
+public class fillformpage extends testbase {
+    public static WebDriverWait wait;
 
         String myassert = "Form filled out successfully";
         By nameinput = By.xpath("//input[@id='et_pb_contact_name_1']");
@@ -46,27 +43,27 @@ public class fillformpage  {
         //Set user name in textbox
         public void setusername (String struserinput ){
 
-            WebElement usrnme = wait.until(ExpectedConditions.elementToBeClickable(nameinput));
+            WebElement usrnme = wait.until(EC.elementToBeClickable(nameinput));
             usrnme.sendKeys(struserinput);
         }
         //Set password in password textbox
 
         public void setMsgInput (String strThisis){
 
-            WebElement msgput = wait.until(ExpectedConditions.elementToBeClickable(MsgInput));
+            WebElement msgput = wait.until(EC.elementToBeClickable(MsgInput));
             msgput.sendKeys(strThisis);
         }
         //Click on submit button
         public void clicksubmit () {
-            WebElement submt = wait.until(ExpectedConditions.elementToBeClickable(submit));
+            WebElement submt = wait.until(EC.elementToBeClickable(submit));
             submt.click();
         }
 
         public void secondbox (String strname1, String strmsg1){
-            WebElement name1 = wait.until(ExpectedConditions.elementToBeClickable(nameinput));
+            WebElement name1 = wait.until(EC.elementToBeClickable(nameinput));
             name1.sendKeys(strname1);
 
-            WebElement msg1 = wait.until(ExpectedConditions.elementToBeClickable(MsgInput));
+            WebElement msg1 = wait.until(EC.elementToBeClickable(MsgInput));
             msg1.sendKeys(strmsg1);
 
             WebElement getthis = driver.findElement(numpar);
@@ -86,14 +83,14 @@ public class fillformpage  {
             System.out.println(results);
             String strcapo = Integer.toString(results);
 
-            WebElement capc = wait.until(ExpectedConditions.elementToBeClickable(captcha));
+            WebElement capc = wait.until(EC.elementToBeClickable(captcha));
             capc.sendKeys(strcapo);
 
-            WebElement submt1 = wait.until(ExpectedConditions.elementToBeClickable(submit));
+            WebElement submt1 = wait.until(EC.elementToBeClickable(submit));
             submt1.click();
         }
         public void asserttext () {
-            WebElement assertthis = wait.until(ExpectedConditions.elementToBeClickable(text1));
+            WebElement assertthis = wait.until(EC.elementToBeClickable(text1));
             String wordup = assertthis.getText();
             Assert.assertEquals(myassert, wordup);
             System.out.println(myassert);
@@ -130,7 +127,5 @@ public class fillformpage  {
         public void screenshot ()  throws AWTException, IOException {
             this.verifyLinkActive();
         }
-    @DataProvider(name="loginData")
-    public Object[][] loginData() throws IOException{
-        return objrepo.readExcelData("C:\\Users\\JasonS\\Desktop\\testrun1.xlsx","sandbox");
-    }}
+
+    }
